@@ -16,7 +16,7 @@ TODO
  - Make it so that it can prompt for username and pass instead of storing it in
    a file
  - Make it use KDE's Kwallet to store the username and password
- - (Possibly) Make it use gnome-keychain also. I don't use gnome anymore, we'll
+ - (Possibly) Make it use gnome-keyring also. I don't use gnome anymore, we'll
    see.
 
 License
