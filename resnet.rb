@@ -3,12 +3,22 @@ require 'nokogiri'
 
 # Change these variables!
 $username = 'name.#'
-$password = 'password'
+$password = nil # Interactive authentication
+#$password = 'password' # Use this password instead of asking
 $daemon = true
 
 def logged_on?
   res = Net::HTTP.get_response(URI('http://www.google.com/404'))
   res.code != "200"
+end
+
+def get_password
+  if $password.nil?
+    print "Enter your ResNet password: "
+    gets.strip
+  else
+    $password
+  end
 end
  
 def get_login_page_uri
@@ -47,7 +57,7 @@ def get_login_hash (uri)
     # Some manual overrides. Be proud of our OS!
     hash["pm"] = "Linux x86_64"
     hash["username"] = $username
-    hash["password"] = $password
+    hash["password"] = get_password
 
     return hash
   else
